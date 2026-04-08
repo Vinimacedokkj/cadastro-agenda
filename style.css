@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: "Lexend", sans-serif;
+    background-color: var(--cor-de-fundo);
+    color: var(--cor-do-texto);
+}
+
+.div-container-de-tudo {
+    width: clamp(280px, 90vw, 420px);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 60px;
+    background-color: var(--cor-secundaria);
+    border-radius: 15px;
+    box-shadow: 1px 1px 30px 10px #0003;
+    border: 1px solid var(--cor-do-texto-soft);
+}
+
+.div-container-de-tudo > h1 {
+    font-size: 1.5rem;
+    color: white;
+}
+
+#infos-criar-conta {
+    font-size: 14px;
+}
+
+.div-dos-dois-dados-para-login {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.div-dos-dois-dados-para-login input {
+    height: 35px;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 8px;
+    outline: none;
+    border: 1px solid var(--cor-secundaria);
+    background-color: var(--cor-de-fundo);
+    caret-color: var(--cor-do-texto);
+    color: #aaa;
+    transition: 0.4s ease;
+}
+
+.div-dos-dois-dados-para-login input:focus {
+    outline: none;
+    border: 1px solid var(--cor-do-texto);
+
+}
+
+.div-usuario,
+.div-senha {
+    width: 100%;
+}
+
+.div-usuario input,
+.div-senha input {
+    width: 100%;
+}
+
+.botao-entrar {
+    background-color: var(--cor-do-botao);
+    color: white;
+    font-weight: 600;
+    outline: none;
+    border-radius: 10px;
+    border: none;
+    height: 40px;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.botao-entrar:hover {
+    background-color: #1070ff;
+}
+
+.div-do-texto-de-sem-conta p {
+    width: 100%;
+    font-size: 13px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+}
+
+.div-do-texto-de-sem-conta a,
+.div-do-texto-de-sem-conta a:visited {
+    color: var(--cor-do-botao);
+}
