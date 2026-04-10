@@ -5,8 +5,8 @@ const cadastrarUsuario = () => {
     
     if (novoUsuario && novaSenha && confirmarSenha) {
         if (novaSenha === confirmarSenha) {
-            
-
+            localStorage.setItem("usuario", "");
+                
         } else {
             alert("As senhas não conferem");
         }
