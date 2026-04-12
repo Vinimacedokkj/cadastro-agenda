@@ -16,6 +16,10 @@ const cadastrarUsuario = () => {
                 const pegarLista = JSON.parse(verificarUsuariosCadastrados);
                 pegarLista.push({"usuario": novoUsuario, "senha": novaSenha});
                 localStorage.setItem("usuarios", JSON.stringify(pegarLista));
+                
+                alert("Usuário cadastrado com sucesso");
+                window.location.href = "login.html";
+
             }
         } else {
             alert("As senhas não conferem");
@@ -25,17 +29,12 @@ const cadastrarUsuario = () => {
     }
 }
 
-const botaoCadastrar = document.querySelector("#botao-cadastrar");
-botaoCadastrar.addEventListener("click", cadastrarUsuario);
-
 const validarUsuario = () => {
-    // const usuario = document.querySelector("#usuario-login").value;
-    // const senha = document.querySelector("#senha-login").value
+    const usuario = document.querySelector("#usuario-login").value;
+    const senha = document.querySelector("#senha-login").value
 
-    // console.log(verificarUsuariosCadastrados);
+    verificarUsuariosCadastrados.map(usuario => {
+        
+    })
 
-    alert("hello world");
 }
-
-const botaoLogin = document.querySelector("#botao-login");
-botaoLogin.addEventListener("click", validarUsuario);
