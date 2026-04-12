@@ -30,11 +30,15 @@ const cadastrarUsuario = () => {
 }
 
 const validarUsuario = () => {
-    const usuario = document.querySelector("#usuario-login").value;
-    const senha = document.querySelector("#senha-login").value
+    const usuarioLogin = document.querySelector("#usuario-login").value;
+    const senhaLogin = document.querySelector("#senha-login").value
 
-    verificarUsuariosCadastrados.map(usuario => {
-        
-    })
+    const usuariosCadastrados = verificarUsuariosCadastrados;
+    JSON.parse(usuariosCadastrados);
+
+    usuariosCadastrados.filter((usuario) => usuario.nome === usuarioLogin && usuario.senha === senhaLogin);
+
+    console.log(usuariosCadastrados);
+    
 
 }
