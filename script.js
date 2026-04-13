@@ -1,6 +1,7 @@
 const STORAGE_USUARIOS = "usuarios";
 const CHAVE_SESSAO = "sessao_ativa";
 const LISTA_USUARIOS = "lista_usuarios_cadastrados";
+const normalizarEmailUsuario = (emailUsuario) => emailUsuario.trim().toLowerCase();
 
 const obterListaUsuarios = () => {
     const verificarLista = localStorage.getItem(STORAGE_USUARIOS);
@@ -21,8 +22,9 @@ const obterListaUsuarios = () => {
 };
 
 const iniciarSessao = (nomeUsuario) => {
+    const usuarioNormalizado = normalizarEmailUsuario(nomeUsuario);
     const sessao = {
-        usuario: nomeUsuario,
+        usuario: usuarioNormalizado,
         idSessao: globalThis.crypto?.randomUUID?.() ?? String(Date.now()),
         iniciadaEm: Date.now(),
     };
@@ -48,14 +50,14 @@ const obterUsuarioLogado = () => {
     if (typeof nomeUsuario !== "string" || nomeUsuario.length === 0) {
         return null;
     }
-    return nomeUsuario;
+    return normalizarEmailUsuario(nomeUsuario);
 };
 
 const encerrarSessao = () => {
     sessionStorage.removeItem(CHAVE_SESSAO);
 };
 
-const chaveAgendaDoUsuario = (nomeUsuario) => `agenda_contatos_${nomeUsuario}`;
+const chaveAgendaDoUsuario = (nomeUsuario) => `agenda_contatos_${normalizarEmailUsuario(nomeUsuario)}`;
 
 const paginaTemPlataformaAgenda = () => !!document.querySelector(".div-plataforma.modal");
 
@@ -80,8 +82,9 @@ const aplicarEstadoLoginNaPagina = () => {
 
 const cadastrarUsuario = () => {
     const campoUsuarioCadastro = document.querySelector("#usuario-cadastro");
-    const novoUsuario = campoUsuarioCadastro.value.trim();
-    const novaSenha = document.querySelector("#senha-cadastro").value.trim();
+    const campoSenhaCadastro = document.querySelector("#senha-cadastro");
+    const novoUsuario = normalizarEmailUsuario(campoUsuarioCadastro.value);
+    const novaSenha = campoSenhaCadastro.value.trim();
     const confirmarSenha = document.querySelector("#confirmar-senha-cadastro").value.trim();
 
     if (novoUsuario && novaSenha && confirmarSenha) {
@@ -91,8 +94,25 @@ const cadastrarUsuario = () => {
             return;
         }
 
+        if (novaSenha.length < 6) {
+            alert("A senha precisa ter no mínimo 6 caracteres.");
+            campoSenhaCadastro.focus();
+            return;
+        }
+
         if (novaSenha === confirmarSenha) {
             const lista = obterListaUsuarios();
+            const emailJaCadastrado = lista.some(
+                (usuarioDaLista) =>
+                    normalizarEmailUsuario(usuarioDaLista.usuario) === novoUsuario
+            );
+
+            if (emailJaCadastrado) {
+                alert("Este e-mail já está cadastrado. Faça login para acessar a conta");
+                campoUsuarioCadastro.focus();
+                return;
+            }
+
             lista.push({ usuario: novoUsuario, senha: novaSenha });
             localStorage.setItem(STORAGE_USUARIOS, JSON.stringify(lista));
             alert("Usuário cadastrado com sucesso");
@@ -107,7 +127,7 @@ const cadastrarUsuario = () => {
 
 const validarUsuario = () => {
     const campoUsuarioLogin = document.querySelector("#usuario-login");
-    const usuarioLogin = campoUsuarioLogin.value.trim();
+    const usuarioLogin = normalizarEmailUsuario(campoUsuarioLogin.value);
     const senhaLogin = document.querySelector("#senha-login").value;
 
     if (!campoUsuarioLogin.checkValidity()) {
@@ -123,7 +143,7 @@ const validarUsuario = () => {
     }
 
     const usuarioEncontrado = lista.find(
-        (u) => u.usuario === usuarioLogin && u.senha === senhaLogin
+        (u) => normalizarEmailUsuario(u.usuario) === usuarioLogin && u.senha === senhaLogin
     );
 
     if (usuarioEncontrado) {
