@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
     <link rel="stylesheet" href="variaveis.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="agenda.css">
 </head>
 <body>
     <div class="div-container-de-tudo">
@@ -28,6 +29,49 @@
 
         <div class="div-do-texto-abaixo-do-botao">
             <p>Não tem conta? <a href="/signup.html">Criar cadastro</a></p>
+        </div>
+    </div>
+
+    <div class="div-plataforma modal">
+        <div class="cabecalho-agenda">
+            <h1>Cadastro na agenda</h1>
+            <div class="cabecalho-agenda-direita">
+                <p class="texto-usuario-sessao">Olá, <strong id="nome-usuario-sessao"></strong></p>
+                <p class="contador-cadastrados"><span id="total-cadastrados-agenda">0</span> cadastrados</p>
+                <button type="button" class="botao botao-sair" onclick="sairDaConta()">Sair</button>
+            </div>
+        </div>
+
+        <div class="area-de-cadastro-e-lista">
+            <div class="area-cadastro">
+                <div class="textos-de-informacoes-cadastro">
+                    <h2>Novo cadastro</h2>
+                    <p>Preencha os dados da pessoa para incluir na lista</p>
+                </div>
+
+                <div class="grupos-campos-cadastro">
+                    <div class="campo-cadastro">
+                        <label for="cadastro-nome">Nome</label>
+                        <input id="cadastro-nome" name="nome" type="text" placeholder="Nome completo" autocomplete="name">
+                    </div>
+                    <div class="campo-cadastro">
+                        <label for="cadastro-email">E-mail</label>
+                        <input id="cadastro-email" name="email" type="email" placeholder="seuemail@exemplo.com" autocomplete="email">
+                    </div>
+                    <div class="campo-cadastro">
+                        <label for="cadastro-telefone">Telefone</label>
+                        <input id="cadastro-telefone" name="telefone" type="tel" placeholder="(00) 00000-0000" autocomplete="tel">
+                    </div>
+                </div>
+
+                <button>Cadastrar</button>
+            </div>
+            <div class="area-lista">
+                <h2>Pessoas cadastradas</h2>
+                <div class="lista-pessoas-cadastradas">
+                    <p>Nenhum usuário cadastrado.</p>
+                </div>
+            </div>
         </div>
 
     </div>
