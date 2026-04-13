@@ -18,3 +18,5 @@ No momento, ainda estou aprendendo sobre banco de dados, por isso, não há inte
 Atualmente estou iniciando meus estudos em React, mas optei por não utilizar essa tecnologia neste projeto por ainda não me sentir totalmente seguro para aplicá-la neste contexto.
 
 Também tenho breve conhecimento de frameworks de CSS, como o Tailwind, que podem acelerar o desenvolvimento, mas neste projeto preferi usar CSS puro por maior domínio.
+
+Link do projeto: https://cadastro-agenda.netlify.app/

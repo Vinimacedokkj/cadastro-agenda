@@ -149,6 +149,7 @@ const validarUsuario = () => {
     if (usuarioEncontrado) {
         iniciarSessao(usuarioEncontrado.usuario);
         aplicarEstadoLoginNaPagina();
+        renderizarListaCadastros();
         alert("Login realizado com sucesso.");
     } else {
         alert("Usuário ou senha incorretos.");
