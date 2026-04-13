@@ -30,15 +30,30 @@ const cadastrarUsuario = () => {
 }
 
 const validarUsuario = () => {
-    const usuarioLogin = document.querySelector("#usuario-login").value;
-    const senhaLogin = document.querySelector("#senha-login").value
+    const usuarioLogin = document.querySelector("#usuario-login").value.trim();
+    const senhaLogin = document.querySelector("#senha-login").value;
 
-    const usuariosCadastrados = verificarUsuariosCadastrados;
-    JSON.parse(usuariosCadastrados);
+    if (!verificarUsuariosCadastrados) {
+        alert("Nenhum usuário cadastrado.");
+        return;
+    }
 
-    usuariosCadastrados.filter((usuario) => usuario.nome === usuarioLogin && usuario.senha === senhaLogin);
+    const lista = JSON.parse(verificarUsuariosCadastrados);
+    const usuarioEncontrado = lista.find(
+        (u) => u.usuario === usuarioLogin && u.senha === senhaLogin
+    );
 
-    console.log(usuariosCadastrados);
-    
-
+    if (usuarioEncontrado) {
+        alert("Login realizado com sucesso.");
+        window.location.href = "plataforma.html";
+    } else {
+        alert("Usuário ou senha incorretos.");
+        
+        const usuarioIncorreto = document.querySelector("#usuario-login");
+        usuarioIncorreto.style.border = "2px solid #a00c";
+        
+        const senhaIncorreta = document.querySelector("#senha-login");
+        senhaIncorreta.style.border = "2px solid #a00c";
+        senhaIncorreta.value = "";
+    }
 }
