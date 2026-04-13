@@ -116,7 +116,7 @@ const cadastrarUsuario = () => {
             lista.push({ usuario: novoUsuario, senha: novaSenha });
             localStorage.setItem(STORAGE_USUARIOS, JSON.stringify(lista));
             alert("Usuário cadastrado com sucesso");
-            window.location.href = "login.html";
+            window.location.href = "index.html";
         } else {
             alert("As senhas não conferem");
         }

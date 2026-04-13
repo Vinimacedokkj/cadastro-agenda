@@ -4,8 +4,8 @@ Este projeto foi desenvolvido com base nos meus estudos, aplicando meus conhecim
 
 ## Contexto do Projeto
 
-O objetivo foi construir uma solução prática e organizada, considerando meu nível atual de aprendizado.  
-No momento, ainda estou aprendendo sobre banco de dados, por isso, à princípio, achei viável a utilização do localStorage do navegador para armazenar temporariamente os dados
+Desenvolvi uma solução de forma simples, considerando meu nível atual de aprendizado.  
+No momento, ainda estou aprendendo sobre banco de dados, por isso, não há integração com banco de dados. Ele apenas utiliza temporariamente dados do localStorage do navegador para armazenar os registros ali naquele momento
 
 ## Tecnologias Utilizadas
 
